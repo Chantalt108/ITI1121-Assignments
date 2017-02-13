@@ -1,7 +1,7 @@
 import java.util.*;
 import java.lang.*;
 import java.text.*;
-import Q2.*;
+import Q2.lib.*;
 /**
  * The class  <b>BirthdayParadox</b> is used to
  * simulated the so-called Birthday paradox, and uses
@@ -31,17 +31,18 @@ public class BirthdayParadox2{
 	 * @return a reference to a Statistics instance that holds the result
 	 * of the experiment
      */
-  public static Statistics runExperiments(int increase, int range, int numberOfRuns){
+     public static Statistics runExperiments(int increase, int range, int numberOfRuns){
 
-   Statistics c = new Statistics(numberOfRuns);
-   for (int x = increase; x < range; x=x+increase){
-        for(int i=0; i < numberOfRuns; i++){
-          c.updateStatistics(oneRun(range));
+       Statistics c = new Statistics(numberOfRuns);
+       for (int x = increase; x < range; x=x+increase){
+            for(int i=0; i < numberOfRuns; i++){
+               c.updateStatistics(oneRun(range));
+          }
+          chart.addDataPoint(range, c.avg, c.stand);
      }
-     chart.addDataPoint(range, avg, stand);
+     return c;
 }
-return c;
-}
+
 
  	/** 
      * Runs a single experiment.
@@ -92,8 +93,8 @@ return c;
      * the size of the set and the number of runs
      */
 	public static void main(String[] args) {
-          display();
-		Statistics s;
+          StudentInfo.display();
+          Statistics s;
           int a,b,c;
           try{
                a=Integer.parseInt(args[0]);
@@ -106,7 +107,8 @@ return c;
                c = 1000;
                s = runExperiments(a,b,c);
           }
-          ITI1121Chart chart = new ITI1121Chart("KHEUTDEUGH'S ADVENTURES");         
+          ITI1121Chart chart = new ITI1121Chart("KHEUTDEUGH'S ADVENTURES");
+          chart.render();
 
      }
 
@@ -146,7 +148,7 @@ class StudentInfo {
      System.out.println("************************************************************");
      System.out.println();
 
-    }
+}
 
 }
 
@@ -180,7 +182,7 @@ class Statistics {
      public  Statistics(int numberOfRuns){
 
           this.runs = numberOfRuns;
-          this.lowest = 0;
+          this.lowest = 10000000;
           this.highest = 0;
           this.avg = 0;
           this.stand = 0;
@@ -201,7 +203,9 @@ class Statistics {
           if(count > runs){
                System.out.println("Error");
           }else{
-               this.lowest = Math.minimum(holder);
+               if (this.lowest >= value){
+                    this.lowest = value;
+               }
 
                if(this.highest <= value){
                     this.highest = value;
