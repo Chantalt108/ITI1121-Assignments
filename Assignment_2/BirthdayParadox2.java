@@ -1,6 +1,7 @@
 import java.util.*;
 import java.lang.*;
 import java.text.*;
+import Q2.*;
 /**
  * The class  <b>BirthdayParadox</b> is used to
  * simulated the so-called Birthday paradox, and uses
@@ -30,15 +31,16 @@ public class BirthdayParadox2{
 	 * @return a reference to a Statistics instance that holds the result
 	 * of the experiment
      */
-   public static Statistics runExperiments(int range, int increase, int numberOfRuns){
+  public static Statistics runExperiments(int increase, int range, int numberOfRuns){
 
-       Statistics c = new Statistics(numberOfRuns);
-       for (int x = increase; x < range;x=x+increase){
-            for(int i=0; i < numberOfRuns; i++){
-               c.updateStatistics(oneRun(range));
-          }
+   Statistics c = new Statistics(numberOfRuns);
+   for (int x = increase; x < range; x=x+increase){
+        for(int i=0; i < numberOfRuns; i++){
+          c.updateStatistics(oneRun(range));
      }
-     return c;
+     chart.addDataPoint(range, avg, stand);
+}
+return c;
 }
 
  	/** 
@@ -90,6 +92,7 @@ public class BirthdayParadox2{
      * the size of the set and the number of runs
      */
 	public static void main(String[] args) {
+          display();
 		Statistics s;
           int a,b,c;
           try{
@@ -99,14 +102,51 @@ public class BirthdayParadox2{
                s=runExperiments(a,b,c);
           }catch(Exception e){
                a = 100;
-               b = 100;
+               b = 1000;
                c = 1000;
                s = runExperiments(a,b,c);
           }
-          System.out.println("After "+ b +" experiments the results are:");
-          System.out.println(s);
+          ITI1121Chart chart = new ITI1121Chart("KHEUTDEUGH'S ADVENTURES");         
 
      }
+
+
+}
+
+/**
+ * Contains a method <code>void display()</code> that all the <code>main</code> methods
+ * call to display the student information. Fill the box with your personal
+ * information.
+ * 
+ * @author Marcel Turcotte (turcotte@eecs.uottawa.ca)
+ */
+
+class StudentInfo {
+
+    /**
+     * Displays the student information: student name, id, section, etc for each
+     * member of the team.
+     */
+
+    public static void display() {
+
+     System.out.println("************************************************************");
+     System.out.println("*                        Tyler Tsang                       *");
+     System.out.println("*                          8659481                         *");
+     System.out.println("*                         ITI1121D.                        *");
+     System.out.println("*                        Assignment 2                      *");
+     System.out.println("************************************************************");
+     System.out.println();
+
+     System.out.println("************************************************************");
+     System.out.println("*                      Chantal Tseung                      *");
+     System.out.println("*                          8716320                         *");
+     System.out.println("*                         ITI1121D.                        *");
+     System.out.println("*                        Assignment 2                      *");
+     System.out.println("************************************************************");
+     System.out.println();
+
+    }
 
 }
 
@@ -140,7 +180,7 @@ class Statistics {
      public  Statistics(int numberOfRuns){
 
           this.runs = numberOfRuns;
-          this.lowest = 365;
+          this.lowest = 0;
           this.highest = 0;
           this.avg = 0;
           this.stand = 0;
@@ -161,9 +201,7 @@ class Statistics {
           if(count > runs){
                System.out.println("Error");
           }else{
-               if (this.lowest >= value){
-                    this.lowest = value;
-               }
+               this.lowest = Math.minimum(holder);
 
                if(this.highest <= value){
                     this.highest = value;
