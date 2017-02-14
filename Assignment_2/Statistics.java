@@ -1,6 +1,3 @@
-package Assignment_2;
-import java.util.*;
-import java.lang.*;
 
 /**
  * The class  <b>Statistics</b> accumulates the results of
@@ -17,29 +14,25 @@ import java.lang.*;
  */
 public class Statistics {
 
-public static int runs, lowest, highest, count;
-public static double avg,stand;
-public static int[] holder;
+     int runs, lowest, highest, count;
+     int[] holder;
 
-
-	/** 
+     /** 
      * Constructor.
      * 
      * @param numberOfRuns the number of experiments that will be run
      */
- 	public  Statistics(int numberOfRuns){
+   public  Statistics(int numberOfRuns){
 
-          this.runs = numberOfRuns;
-          this.lowest = 0;
-          this.highest = 0;
-          this.avg = 0;
-          this.stand = 0;
-          this.holder = new int[numberOfRuns];
-          this.count = 0;
+     runs = numberOfRuns;
+     lowest = 1000000;
+     highest = 0;
+     holder = new int[numberOfRuns];
+     count = 0;
 
-	}
-	
-	/** 
+}
+
+     /** 
      * Updates statistics after one experiment.
      * This method cannot be called more times than the 
      * paramter that was passed in the constructor. If
@@ -47,68 +40,70 @@ public static int[] holder;
      * no change should occur.
      *   @param value the result of the new experiment
      */
-	public void updateStatistics(int value){
+     public void updateStatistics(int value){
 
-          if (this.lowest >= value){
-               this.lowest = value;
+          if(count > runs){
+               System.out.println("Error");
+          }else{
+               if(lowest >= value){
+                    lowest = value;
+               }
+
+               if(highest <= value){
+                    highest = value;
+               }
+
+               holder[count++] = value;
+
           }
 
-          if(this.highest <= value){
-               this.highest = value;
-          }
-
-          this.holder[count] = value;
-          count++;
-
-          this.avg = this.average();
-          this.stand = this.standardDeviation();
+     }
 
 
-
-	}
-	
-
-	/** 
+     /** 
      *   @return the current average of the values passed
      * to the method updateStatistic
      */
-	public double average(){
+     public double average(){
+
           double sum = 0;
           for(int i = 0; i<count; i++){
-               sum = sum + this.holder[i];
+               sum = sum + holder[i];
           }
-          sum = sum/count;
-          return sum;
-	}
+          
+          return Math.round(((double)sum/(double)count)*100d)/100d;
+
+     }
 
 
-	/** 
+     /** 
      *   @return the current standard deviation of the values passed
      * to the method updateStatistic
      */
-	public double standardDeviation(){
+     public double standardDeviation(){
 
           double mean,total = 0;
           mean = this.average();
 
           for(int i=0; i<count; i++){
-               total = total + Math.pow(2,(mean-this.holder[i]));
+               total = total + Math.pow((mean-holder[i]),2);
           }
 
-          total = total/count;
-          total = Math.sqrt(total);
-          return total;
+          return Math.round(Math.sqrt((double)total/(double)count)*100d)/100d;
 
-	}
+     }
 
-	/** 
+     /** 
      *  @return Returns the complete statistics information:
      * current minimum, current maximim, current average and
      * current standard deviation. For the last two, only two 
      * digits decimals are shown
      */
-	public String toString(){
-     return "The minimum is " + this.lowest + "\n" +"The maximum is " + this.highest + "\n" + "The mean is " + Math.round(this.avg) + "\n" + "The standard deviation is " + Math.round(this.stand);
-	}
+     public String toString(){
+
+          return "The minimum is " + lowest + "\n" +"The maximum is " + highest + "\n" + "The mean is " + average() + "\n" + "The standard deviation is " + standardDeviation();
+
+
+     }
 
 }

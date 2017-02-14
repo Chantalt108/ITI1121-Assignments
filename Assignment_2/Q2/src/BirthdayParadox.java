@@ -27,11 +27,17 @@ public class BirthdayParadox {
 	 * @return a reference to a Statistics instance that holds the result
 	 * of the experiment
      */
- 	public static Statistics runExperiments(int range, int numberOfRuns){
+  public static Statistics runExperiments(int range, int numberOfRuns){
+   Statistics c = new Statistics(numberOfRuns);
+   for(int i=0; i < numberOfRuns; i++){
+    c.updateStatistics(oneRun(range));
+  }
+  return c;
+}
 
-// REPLACE THE BODY OF THIS METHOD WITH YOUR OWN IMPLEMENTATION
 
-	}
+
+
 
  	/** 
      * Runs a single experiment.
@@ -43,13 +49,30 @@ public class BirthdayParadox {
 	 * @return the number of random draw in the set that the method 
 	 * used before drawing the same element for the second time
      */
-	
+
  	private static int oneRun(int range){
 
-// REPLACE THE BODY OF THIS METHOD WITH YOUR OWN IMPLEMENTATION
+    int a, count=1;
+    int[] list = new int[range];
+    boolean flag = true;
+    list[0] = generator.nextInt(range);
 
-	}
-	
+    while(flag){
+     a = generator.nextInt(range);
+     for(int i=0; i < count; i++){
+      if (a == list[i]){
+       flag = false;
+     }
+   }
+   if(flag){
+    list[count++] = a;
+  }
+}
+
+return count;
+
+}
+
 
      /** 
      * Main method. Runs the experiments numberOfRunstimes,
@@ -60,10 +83,33 @@ public class BirthdayParadox {
      * @param args if not empty, contains the runtime values for
      * step, max and numberOfRuns
      */
-     	public static void main(String[] args) {
+     public static void main(String[] args) {
+      StudentInfo stu = new StudentInfo();
+      stu.display();
+      Statistics s;
+      int a,b,c;
+      double k = 0.53;
+      try{
+       a=Integer.parseInt(args[0]);
+       b=Integer.parseInt(args[1]);
+       c=Integer.parseInt(args[2]);
+     }catch(Exception e){
+       a = 100;
+       b = 1000;
+       c = 1000;
+     }
+     ITI1121Chart chart = new ITI1121Chart("KHEUTDEUGH'S ADVENTURES");  
 
-// REPLACE THE BODY OF THIS METHOD WITH YOUR OWN IMPLEMENTATION
+     for(int i=a; i<b; i+=a){
+       s = runExperiments(i,c);
+       chart.addDataPoint(i, s.average(), s.standardDeviation());
+     }
+     chart.addPolynome(k);
+     chart.addPolynome(k+0.05);
+     chart.addPolynome(k-0.05);
 
-	}
+     chart.render();
 
-}
+   }
+
+ }

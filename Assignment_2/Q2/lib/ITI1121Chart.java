@@ -1,4 +1,4 @@
-package Q2.lib;
+
 import java.awt.Color;
 import javax.swing.JPanel;
 import java.awt.geom.Rectangle2D;

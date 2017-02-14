@@ -14,19 +14,24 @@
  */
 public class Statistics {
 
-// ADD HERE INSTANCE VARIABLES DECLARATION
+     int runs, lowest, highest, count;
+     int[] holder;
 
 	/** 
      * Constructor.
      * 
      * @param numberOfRuns the number of experiments that will be run
      */
- 	public  Statistics(int numberOfRuns){
+   public  Statistics(int numberOfRuns){
 
-// REPLACE THE BODY OF THIS METHOD WITH YOUR OWN IMPLEMENTATION
+     runs = numberOfRuns;
+     lowest = 1000000;
+     highest = 0;
+     holder = new int[numberOfRuns];
+     count = 0;
 
-	}
-	
+}
+
 	/** 
      * Updates statistics after one experiment.
      * This method cannot be called more times than the 
@@ -37,10 +42,23 @@ public class Statistics {
      */
 	public void updateStatistics(int value){
 
-// REPLACE THE BODY OF THIS METHOD WITH YOUR OWN IMPLEMENTATION
+          if(count > runs){
+               System.out.println("Error");
+          }else{
+               if(lowest >= value){
+                    lowest = value;
+               }
 
-	}
-	
+               if(highest <= value){
+                    highest = value;
+               }
+
+               holder[count++] = value;
+
+          }
+
+     }
+
 
 	/** 
      *   @return the current average of the values passed
@@ -48,9 +66,14 @@ public class Statistics {
      */
 	public double average(){
 
-// REPLACE THE BODY OF THIS METHOD WITH YOUR OWN IMPLEMENTATION
+          double sum = 0;
+          for(int i = 0; i<count; i++){
+               sum = sum + holder[i];
+          }
+          
+          return Math.round(((double)sum/(double)count)*100d)/100d;
 
-	}
+     }
 
 
 	/** 
@@ -59,9 +82,16 @@ public class Statistics {
      */
 	public double standardDeviation(){
 
-// REPLACE THE BODY OF THIS METHOD WITH YOUR OWN IMPLEMENTATION
+          double mean,total = 0;
+          mean = this.average();
 
-	}
+          for(int i=0; i<count; i++){
+               total = total + Math.pow((mean-holder[i]),2);
+          }
+
+          return Math.round(Math.sqrt((double)total/(double)count)*100d)/100d;
+
+     }
 
 	/** 
      *  @return Returns the complete statistics information:
@@ -71,8 +101,9 @@ public class Statistics {
      */
 	public String toString(){
 
-// REPLACE THE BODY OF THIS METHOD WITH YOUR OWN IMPLEMENTATION
+          return "The minimum is " + lowest + "\n" +"The maximum is " + highest + "\n" + "The mean is " + average() + "\n" + "The standard deviation is " + standardDeviation();
 
-	}
+
+     }
 
 }
