@@ -2,14 +2,13 @@
 // Student number: 8659481
 // Course: ITI 1121-D
 // Assignment: 2
-// Part: 2
+// Part: 1
 
 // Author: Chantal Tseung
 // Student number: 8716320
 // Course: ITI 1121-D
 // Assignment: 2
-// Part: 2
-
+// Part: 1
 /**
  * The class  <b>Statistics</b> accumulates the results of
  * the experiments. It know ahead of time how many experiments
@@ -28,7 +27,7 @@ public class Statistics {
      int runs, lowest, highest, count;
      int[] holder;
 
-	/** 
+     /** 
      * Constructor.
      * 
      * @param numberOfRuns the number of experiments that will be run
@@ -43,7 +42,7 @@ public class Statistics {
 
 }
 
-	/** 
+     /** 
      * Updates statistics after one experiment.
      * This method cannot be called more times than the 
      * paramter that was passed in the constructor. If
@@ -51,7 +50,7 @@ public class Statistics {
      * no change should occur.
      *   @param value the result of the new experiment
      */
-	public void updateStatistics(int value){
+     public void updateStatistics(int value){
 
           if(count > runs){
                System.out.println("Error");
@@ -71,11 +70,11 @@ public class Statistics {
      }
 
 
-	/** 
+     /** 
      *   @return the current average of the values passed
      * to the method updateStatistic
      */
-	public double average(){
+     public double average(){
 
           double sum = 0;
           for(int i = 0; i<count; i++){
@@ -87,11 +86,11 @@ public class Statistics {
      }
 
 
-	/** 
+     /** 
      *   @return the current standard deviation of the values passed
      * to the method updateStatistic
      */
-	public double standardDeviation(){
+     public double standardDeviation(){
 
           double mean,total = 0;
           mean = this.average();
@@ -104,13 +103,13 @@ public class Statistics {
 
      }
 
-	/** 
+     /** 
      *  @return Returns the complete statistics information:
      * current minimum, current maximim, current average and
      * current standard deviation. For the last two, only two 
      * digits decimals are shown
      */
-	public String toString(){
+     public String toString(){
 
           return "The minimum is " + lowest + "\n" +"The maximum is " + highest + "\n" + "The mean is " + average() + "\n" + "The standard deviation is " + standardDeviation();
 

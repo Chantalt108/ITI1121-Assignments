@@ -2,13 +2,13 @@
 // Student number: 8659481
 // Course: ITI 1121-D
 // Assignment: 2
-// Part: 2
+// Part: 1
 
 // Author: Chantal Tseung
 // Student number: 8716320
 // Course: ITI 1121-D
 // Assignment: 2
-// Part: 2
+// Part: 1
 /**
  * The class  <b>BirthdayParadox</b> is used to
  * simulated the so-called Birthday paradox, and uses
@@ -19,7 +19,7 @@
  *
  */
 
-public class BirthdayParadox {
+public class BirthdayParadox{
 
 
 	/** 
@@ -39,16 +39,13 @@ public class BirthdayParadox {
 	 * of the experiment
      */
   public static Statistics runExperiments(int range, int numberOfRuns){
+
    Statistics c = new Statistics(numberOfRuns);
    for(int i=0; i < numberOfRuns; i++){
-    c.updateStatistics(oneRun(range));
-  }
-  return c;
-}
-
-
-
-
+     c.updateStatistics(oneRun(range));
+   }
+   return c;
+ }
 
  	/** 
      * Runs a single experiment.
@@ -62,8 +59,8 @@ public class BirthdayParadox {
      */
 
  	private static int oneRun(int range){
-
-    int a, count=1;
+    int a, count;
+    count = 1;
     int[] list = new int[range];
     boolean flag = true;
     list[0] = generator.nextInt(range);
@@ -75,52 +72,46 @@ public class BirthdayParadox {
        flag = false;
      }
    }
-   if(flag){
-    list[count++] = a;
+   if(flag == true){
+    list[count] = a;
   }
+
+  count++;
 }
 
 return count;
 
+
 }
 
 
-     /** 
-     * Main method. Runs the experiments numberOfRunstimes,
-     * with increasingly large sets (increment in size:step).
-     * Stop once the size reaches max.
-     * plots the result.
+	/** 
+     * Main method. The default size of the set is 365, and
+     * the experiment is run 50 times. Both numbers can be reset
+     * from the command line.
+     * This method runs the experiments and prints the
+     * resulting Statistics
      * 
      * @param args if not empty, contains the runtime values for
-     * step, max and numberOfRuns
+     * the size of the set and the number of runs
      */
-     public static void main(String[] args) {
-      StudentInfo stu = new StudentInfo();
-      stu.display();
-      Statistics s;
-      int a,b,c;
-      double k = 0.53;
-      try{
-       a=Integer.parseInt(args[0]);
-       b=Integer.parseInt(args[1]);
-       c=Integer.parseInt(args[2]);
-     }catch(Exception e){
-       a = 100;
-       b = 1000;
-       c = 1000;
-     }
-     ITI1121Chart chart = new ITI1121Chart("KHEUTDEUGH'S ADVENTURES");  
-
-     for(int i=a; i<b; i+=a){
-       s = runExperiments(i,c);
-       chart.addDataPoint(i, s.average(), s.standardDeviation());
-     }
-     chart.addPolynome(k);
-     chart.addPolynome(k+0.05);
-     chart.addPolynome(k-0.05);
-
-     chart.render();
-
+	public static void main(String[] args) {
+    StudentInfo stu = new StudentInfo();
+    stu.display();
+    Statistics s;
+    int a,b;
+    try{
+     a=Integer.parseInt(args[0]);
+     b=Integer.parseInt(args[1]);
+     s=runExperiments(a,b);
+   }catch(Exception e){
+     a = 365;
+     b = 50;
+     s = runExperiments(365,50);
    }
+   System.out.println("After "+ b +" experiments the results are:");
+   System.out.println(s);
 
  }
+
+}

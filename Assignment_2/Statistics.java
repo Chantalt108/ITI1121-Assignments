@@ -1,4 +1,14 @@
+// Author: Tyler Tsang
+// Student number: 8659481
+// Course: ITI 1121-D
+// Assignment: 2
+// Part: 1
 
+// Author: Chantal Tseung
+// Student number: 8716320
+// Course: ITI 1121-D
+// Assignment: 2
+// Part: 1
 /**
  * The class  <b>Statistics</b> accumulates the results of
  * the experiments. It know ahead of time how many experiments

@@ -1,3 +1,14 @@
+// Author: Tyler Tsang
+// Student number: 8659481
+// Course: ITI 1121-D
+// Assignment: 2
+// Part: 2
+
+// Author: Chantal Tseung
+// Student number: 8716320
+// Course: ITI 1121-D
+// Assignment: 2
+// Part: 2
 /**
  * Contains a method <code>void display()</code> that all the <code>main</code> methods
  * call to display the student information. Fill the box with your personal
