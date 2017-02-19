@@ -37,7 +37,7 @@ public class DotInfo {
     public int getX(){
 
 // ADD YOUR CODE HERE
-
+        return x;
     }
     
     /**
@@ -48,6 +48,7 @@ public class DotInfo {
     public int getY(){
 
 // ADD YOUR CODE HERE
+        return y;
 
     }
     

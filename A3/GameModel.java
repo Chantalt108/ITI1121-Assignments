@@ -33,7 +33,7 @@ public class GameModel {
 
 // ADD YOUR INSTANCE VARIABLES HERE
     private int size, numberOfSteps;
-    private Color[] sqaures;
+    private Color[] squares;
 
     /**
      * Constructor to initialize the model to a given size of board.
@@ -56,6 +56,7 @@ public class GameModel {
     public void reset(){
 
 // ADD YOUR CODE HERE
+        
 
     }
 
@@ -66,6 +67,7 @@ public class GameModel {
      * @return the value of the attribute sizeOfGame
      */   
     public int getSize(){
+        return size;
 
 // ADD YOUR CODE HERE
 
@@ -82,8 +84,9 @@ public class GameModel {
      */   
     public int getColor(int i, int j){
 
-// ADD YOUR CODE HERE
 
+// ADD YOUR CODE HERE
+        int index = 
     }
 
     /**
@@ -96,6 +99,7 @@ public class GameModel {
      * @return the status of the dot at location (i,j)
      */   
     public boolean isCaptured(int i, int j){
+
 
 // ADD YOUR CODE HERE
 
@@ -124,7 +128,7 @@ public class GameModel {
     public int getNumberOfSteps(){
 
 // ADD YOUR CODE HERE
-
+        return numberOfSteps;
     }
 
     /**
