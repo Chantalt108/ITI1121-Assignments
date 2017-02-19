@@ -27,6 +27,11 @@ public class DotInfo {
 
 // ADD YOUR CODE HERE
 
+        int index = y * width + x;
+        this.x = x;
+        this.y = y;
+        this.color = color;
+
     }
 
     /**
@@ -72,6 +77,7 @@ public class DotInfo {
     public boolean isCaptured(){
 
 // ADD YOUR CODE HERE
+        return captured;
 
     }
 
@@ -83,6 +89,7 @@ public class DotInfo {
     public int getColor() {
 
 // ADD YOUR CODE HERE
+        return color;
 
     }
 

@@ -32,8 +32,9 @@ public class GameModel {
 
 
 // ADD YOUR INSTANCE VARIABLES HERE
-    private int size, numberOfSteps;
+    private int size, numberOfSteps, width, height;
     private Color[] squares;
+    private String currentSelectedColor;
 
     /**
      * Constructor to initialize the model to a given size of board.
@@ -57,6 +58,11 @@ public class GameModel {
 
 // ADD YOUR CODE HERE
         
+        for (int row = 0; row < width; row++){
+            for (int coloumn = 0; coloumn < height; coloumn++){
+
+            }
+        }
 
     }
 
