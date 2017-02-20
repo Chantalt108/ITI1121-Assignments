@@ -146,9 +146,22 @@ public class GameModel {
     public void setCurrentSelectedColor(int val) {
 
 // ADD YOUR CODE HERE
-        /**
-
-        */
+        switch(i){
+            case 0:
+            return PURPLE;
+            case 1:
+            return BLUE;
+            case 2:
+            return GREEN;
+            case 3:
+            return YELLOW;
+            case 4:
+            return RED;
+            case 5:
+            return PINK;
+            default:
+            throw new IllegalStateException();
+        }
 
     }
 
@@ -178,7 +191,7 @@ public class GameModel {
     public DotInfo get(int i, int j) {
 
 // ADD YOUR CODE HERE
-
+        return DotInfo(i, j, null);
     }
 
 
@@ -201,6 +214,16 @@ public class GameModel {
     public boolean isFinished(){
 
 // ADD YOUR CODE HERE
+        Color c = board.getColor(0);
+        Random rand = new Random();
+        for (int row = 0; row < size; row++){
+            for (int column = 0; column < size; column++){
+                if (board.getColor(i)!= c){
+                    return false;
+                }
+            }
+        }
+        return true;
 
     }
 
