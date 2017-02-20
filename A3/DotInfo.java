@@ -10,7 +10,8 @@ public class DotInfo {
 
 
 // ADD YOUR INSTANCE VARIABLES HERE
-
+    boolean captured;
+    int x, y, color;
 
 
     /**
@@ -27,10 +28,11 @@ public class DotInfo {
 
 // ADD YOUR CODE HERE
 
-        int index = y * width + x;
+        
         this.x = x;
         this.y = y;
         this.color = color;
+        this.captured = false;
 
     }
 
@@ -66,7 +68,7 @@ public class DotInfo {
     public void setCaptured(boolean captured) {
 
 // ADD YOUR CODE HERE
-
+        this.captured = true;
     }
 
     /**

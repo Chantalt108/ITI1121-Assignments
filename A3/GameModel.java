@@ -1,6 +1,6 @@
 // ADD YOUR IMPORTS HERE
 import java.awt.Color;
-
+import java.util.Random;
 /**
  * The class <b>GameModel</b> holds the model, the state of the systems. 
  * It stores the followiung information:
@@ -32,7 +32,7 @@ public class GameModel {
 
 
 // ADD YOUR INSTANCE VARIABLES HERE
-    private int size, numberOfSteps, width, height;
+    private int size, numberOfSteps;
     private Color[] squares;
     private String currentSelectedColor;
 
@@ -57,10 +57,10 @@ public class GameModel {
     public void reset(){
 
 // ADD YOUR CODE HERE
-        
-        for (int row = 0; row < width; row++){
-            for (int coloumn = 0; coloumn < height; coloumn++){
-
+        Random rand = new Random();
+        for (int row = 0; row < size; row++){
+            for (int column = 0; column < size; column++){
+                board[row][column] = rand.nextInt(5);
             }
         }
 
@@ -92,7 +92,7 @@ public class GameModel {
 
 
 // ADD YOUR CODE HERE
-        int index = 
+        return board[i][j].getColor;
     }
 
     /**
@@ -108,7 +108,7 @@ public class GameModel {
 
 
 // ADD YOUR CODE HERE
-
+        return board[i][j].isCaptured;
     }
 
     /**
@@ -122,7 +122,7 @@ public class GameModel {
     public void capture(int i, int j){
  
  // ADD YOUR CODE HERE
-
+        board[i][j].setCaptured;
    }
 
 
