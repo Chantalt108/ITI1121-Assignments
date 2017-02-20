@@ -73,10 +73,10 @@ public class GameModel {
      * @return the value of the attribute sizeOfGame
      */   
     public int getSize(){
-        return size;
+
 
 // ADD YOUR CODE HERE
-
+        return size;
     }
 
     /**
@@ -146,6 +146,9 @@ public class GameModel {
     public void setCurrentSelectedColor(int val) {
 
 // ADD YOUR CODE HERE
+        /**
+
+        */
 
     }
 
@@ -157,7 +160,7 @@ public class GameModel {
     public int getCurrentSelectedColor() {
 
 // ADD YOUR CODE HERE
-
+        return currentSelectedColor;
     }
 
 
